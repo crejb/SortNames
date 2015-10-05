@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SortNames.Interfaces
 {
-    public interface IPersonDataParser
+    public interface IFileWriter
     {
-        Person ParsePerson(string personString);
+        void WriteData(IEnumerable<string> data);
     }
 }

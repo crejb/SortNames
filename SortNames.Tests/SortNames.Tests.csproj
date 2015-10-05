@@ -60,6 +60,7 @@
     <Compile Include="PersonDataParserTests.cs" />
     <Compile Include="PersonDataSourceTests.cs" />
     <Compile Include="SortStrategyTests.cs" />
+    <Compile Include="PeopleDisplayerToFileTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

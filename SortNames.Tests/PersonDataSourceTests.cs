@@ -16,7 +16,7 @@ namespace SortNames.Tests
             var fileReader = Substitute.For<IFileReader>();
             fileReader.ReadData().Returns(new[] { "Line1", "Line2" });
 
-            var parser = Substitute.For<IPersonDataParser>();
+            var parser = Substitute.For<IPersonFormatter>();
             parser.ParsePerson("Line1").Returns(new Person("AFirst", "ALast"));
             parser.ParsePerson("Line2").Returns(new Person("BFirst", "BLast"));
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SortNames
 {
-    public class PersonDataParser : IPersonDataParser
+    public class PersonFormatter : IPersonFormatter
     {
         public Person ParsePerson(string personString)
         {
@@ -23,6 +23,12 @@ namespace SortNames
             }
 
             return new Person(nameParts[1].Trim(), nameParts[0].Trim());
+        }
+
+
+        public string FormatPerson(Person person)
+        {
+            return string.Format("{0}, {1}", person.LastName, person.FirstName);
         }
     }
 }

@@ -10,9 +10,9 @@ namespace SortNames
     public class PersonDataSource : IPersonDataSource
     {
         private readonly IFileReader _fileReader;
-        private readonly IPersonDataParser _parser;
+        private readonly IPersonFormatter _parser;
 
-        public PersonDataSource(IFileReader fileReader, IPersonDataParser parser)
+        public PersonDataSource(IFileReader fileReader, IPersonFormatter parser)
         {
             _fileReader = fileReader;
             _parser = parser;

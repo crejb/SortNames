@@ -43,14 +43,17 @@
   <ItemGroup>
     <Compile Include="ArgumentsParser.cs" />
     <Compile Include="FilenameProvider.cs" />
-    <Compile Include="Interfaces\IPersonDataParser.cs" />
+    <Compile Include="Interfaces\IFileWriter.cs" />
+    <Compile Include="Interfaces\IPersonFormatter.cs" />
     <Compile Include="Interfaces\IFileReader.cs" />
     <Compile Include="Interfaces\ISortStrategy.cs" />
     <Compile Include="Interfaces\IPeopleDisplayer.cs" />
     <Compile Include="Interfaces\IPersonDataSource.cs" />
     <Compile Include="Person.cs" />
-    <Compile Include="PersonDataParser.cs" />
+    <Compile Include="PersonFileWriter.cs" />
+    <Compile Include="PersonFormatter.cs" />
     <Compile Include="PersonDataSource.cs" />
+    <Compile Include="PeopleDisplayerToFile.cs" />
     <Compile Include="PersonFileReader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
