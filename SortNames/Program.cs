@@ -49,7 +49,7 @@ namespace SortNames
         {
             var dataSource = new PersonDataSource(new PersonFileReader(inputFilename), new PersonDataParser());
 
-            return new SortNamesExecution(dataSource, null, null);
+            return new SortNamesExecution(dataSource, new LastNameSortStrategy(), null);
         }
     }
 }
