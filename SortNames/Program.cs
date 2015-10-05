@@ -47,7 +47,7 @@ namespace SortNames
 
         private static SortNamesExecution BuildSortExecution()
         {
-            return new SortNamesExecution();
+            throw new NotImplementedException();
         }
     }
 }

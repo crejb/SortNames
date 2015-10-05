@@ -43,6 +43,10 @@
   <ItemGroup>
     <Compile Include="ArgumentsParser.cs" />
     <Compile Include="FilenameProvider.cs" />
+    <Compile Include="Interfaces\ISortStrategy.cs" />
+    <Compile Include="Interfaces\IPeopleDisplayer.cs" />
+    <Compile Include="Interfaces\IPersonDataSource.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SortNamesExecution.cs" />
