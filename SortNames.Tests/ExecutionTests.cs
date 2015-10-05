@@ -34,13 +34,39 @@ namespace SortNames.Tests
             var displayer = Substitute.For<IPeopleDisplayer>();
             
             // Act
-            var execution = new SortNamesExecution(dataSource, sortStrategy, displayer);
+            var execution = new SortNamesExecution(dataSource, sortStrategy, new IPeopleDisplayer[] { displayer });
             execution.Run();
 
             // Assert
             dataSource.Received().GetPeople();
             sortStrategy.Received().Sort(unsortedPeople);
             displayer.Received().DisplayPeople(sortedPeople);
+        }
+
+        [TestMethod]
+        public void GivenMultipleDisplayers_ThenAllDisplayersAreTriggered()
+        {
+            var sortedPeople = new List<Person>
+            {
+                new Person("AFirst", "ALast"),
+                new Person("BFirst", "BLast")
+            };
+
+            // Arrange
+            var dataSource = Substitute.For<IPersonDataSource>();
+            var sortStrategy = Substitute.For<ISortStrategy>();
+            sortStrategy.Sort(Arg.Any<IEnumerable<Person>>()).Returns(sortedPeople);
+
+            var displayer1 = Substitute.For<IPeopleDisplayer>();
+            var displayer2 = Substitute.For<IPeopleDisplayer>();
+
+            // Act
+            var execution = new SortNamesExecution(dataSource, sortStrategy, new IPeopleDisplayer[] { displayer1, displayer2 });
+            execution.Run();
+
+            // Assert
+            displayer1.Received().DisplayPeople(sortedPeople);
+            displayer2.Received().DisplayPeople(sortedPeople);
         }
     }
 }

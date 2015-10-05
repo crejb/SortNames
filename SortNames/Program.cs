@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SortNames.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -53,10 +54,14 @@ namespace SortNames
             var personFileReader = new PersonFileReader(inputFilename);
             var personFileWriter = new PersonFileWriter(outputFilename);
 
-            var displayer = new PeopleDisplayerToFile(formatter, personFileWriter);
+            var displayers = new IPeopleDisplayer[]
+            {
+                new PeopleDisplayerToFile(formatter, personFileWriter),
+                new PeopleDisplayerToConsole(formatter)
+            };
 
             var dataSource = new PersonDataSource(personFileReader, formatter);
-            return new SortNamesExecution(dataSource, sortStrategy, displayer);
+            return new SortNamesExecution(dataSource, sortStrategy, displayers);
         }
     }
 }

@@ -49,6 +49,7 @@
     <Compile Include="Interfaces\ISortStrategy.cs" />
     <Compile Include="Interfaces\IPeopleDisplayer.cs" />
     <Compile Include="Interfaces\IPersonDataSource.cs" />
+    <Compile Include="PeopleDisplayerToConsole.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="PersonFileWriter.cs" />
     <Compile Include="PersonFormatter.cs" />

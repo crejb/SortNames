@@ -11,20 +11,23 @@ namespace SortNames
     {
         private readonly IPersonDataSource _dataSource;
         private readonly ISortStrategy _sortStrategy;
-        private readonly IPeopleDisplayer _displayer;
+        private readonly IEnumerable<IPeopleDisplayer> _displayers;
 
-        public SortNamesExecution(IPersonDataSource dataSource, ISortStrategy sortStrategy, IPeopleDisplayer displayer)
+        public SortNamesExecution(IPersonDataSource dataSource, ISortStrategy sortStrategy, IEnumerable<IPeopleDisplayer> displayers)
         {
             _dataSource = dataSource;
             _sortStrategy = sortStrategy;
-            _displayer = displayer;
+            _displayers = displayers;
         }
 
         public void Run()
         {
             var people = _dataSource.GetPeople();
             var sortedPeople = _sortStrategy.Sort(people);
-            _displayer.DisplayPeople(sortedPeople);
+            foreach (var displayer in _displayers)
+            {
+                displayer.DisplayPeople(sortedPeople);
+            }
         }
     }
 }
