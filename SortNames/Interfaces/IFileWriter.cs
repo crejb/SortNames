@@ -8,6 +8,6 @@ namespace SortNames.Interfaces
 {
     public interface IFileWriter
     {
-        void WriteData(IEnumerable<string> data);
+        bool WriteData(IEnumerable<string> data);
     }
 }

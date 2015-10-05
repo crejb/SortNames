@@ -16,13 +16,14 @@ namespace SortNames
             _formatter = formatter;
         }
 
-        public void DisplayPeople(IEnumerable<Person> people)
+        public bool DisplayPeople(IEnumerable<Person> people)
         {
             foreach (var person in people)
             {
                 var personString = _formatter.FormatPerson(person);
                 Console.WriteLine(personString);
             }
+            return true;
         }
     }
 }

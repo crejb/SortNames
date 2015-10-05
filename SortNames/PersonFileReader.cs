@@ -11,15 +11,25 @@ namespace SortNames
     public class PersonFileReader : IFileReader
     {
         private readonly string _filename;
+        private readonly ILogger _logger;
 
-        public PersonFileReader(string filename)
+        public PersonFileReader(string filename, ILogger logger)
         {
             _filename = filename;
+            _logger = logger;
         }
 
         public IEnumerable<string> ReadData()
         {
-            return File.ReadLines(_filename);
+            try
+            {
+                return File.ReadLines(_filename);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogMessage(ex.Message);
+                return null;
+            }
         }
     }
 }

@@ -20,14 +20,25 @@ namespace SortNames
             _displayers = displayers;
         }
 
-        public void Run()
+        public bool Run()
         {
             var people = _dataSource.GetPeople();
+            if (people == null)
+            {
+                return false;
+            }
+
             var sortedPeople = _sortStrategy.Sort(people);
+
+            bool hasError = false;
             foreach (var displayer in _displayers)
             {
-                displayer.DisplayPeople(sortedPeople);
+                if (!displayer.DisplayPeople(sortedPeople))
+                {
+                    hasError = true;
+                }
             }
+            return !hasError;
         }
     }
 }

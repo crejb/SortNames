@@ -20,7 +20,12 @@ namespace SortNames
             var outputFilename = GetOutputFilename(inputFilename);
 
             var sortExecution = BuildSortExecution(inputFilename, outputFilename);
-            sortExecution.Run();
+
+            if (!sortExecution.Run())
+            {
+                Console.WriteLine("Sort Names failed.");
+                return;
+            }
 
             Console.WriteLine("Finished: created {0}", outputFilename);
         }
@@ -48,11 +53,12 @@ namespace SortNames
 
         private static SortNamesExecution BuildSortExecution(string inputFilename, string outputFilename)
         {
+            var logger = new ConsoleLogger();
             var formatter = new PersonFormatter();
             var sortStrategy = new LastNameSortStrategy();
 
-            var personFileReader = new PersonFileReader(inputFilename);
-            var personFileWriter = new PersonFileWriter(outputFilename);
+            var personFileReader = new PersonFileReader(inputFilename, logger);
+            var personFileWriter = new PersonFileWriter(outputFilename, logger);
 
             var displayers = new IPeopleDisplayer[]
             {

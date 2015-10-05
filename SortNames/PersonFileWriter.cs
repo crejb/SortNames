@@ -11,15 +11,28 @@ namespace SortNames
     public class PersonFileWriter : IFileWriter
     {
         private readonly string _filename;
+        private readonly ILogger _logger;
 
-        public PersonFileWriter(string filename)
+        public PersonFileWriter(string filename, ILogger logger)
         {
             _filename = filename;
+            _logger = logger;
         }
 
-        public void WriteData(IEnumerable<string> data)
+        public bool WriteData(IEnumerable<string> data)
         {
-            File.WriteAllLines(_filename, data.ToArray());
+            try
+            {
+                File.WriteAllLines(_filename, data.ToArray());
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogMessage(ex.Message);
+                return false;
+            }
+
+            
         }
     }
 }

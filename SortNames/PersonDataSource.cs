@@ -21,6 +21,10 @@ namespace SortNames
         public IEnumerable<Person> GetPeople()
         {
             var data = _fileReader.ReadData();
+            if(data == null)
+            {
+                return null;
+            }
 
             var people = new List<Person>();
 

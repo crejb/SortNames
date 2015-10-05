@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SortNames.Interfaces
 {
-    public interface IPeopleDisplayer
+    public interface ILogger
     {
-        bool DisplayPeople(IEnumerable<Person> people);
+        void LogMessage(string message);
     }
 }

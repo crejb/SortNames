@@ -18,10 +18,10 @@ namespace SortNames
             _fileWriter = fileWriter;
         }
 
-        public void DisplayPeople(IEnumerable<Person> people)
+        public bool DisplayPeople(IEnumerable<Person> people)
         {
             var peopleStrings = people.Select(person => _formatter.FormatPerson(person));
-            _fileWriter.WriteData(peopleStrings);
+            return _fileWriter.WriteData(peopleStrings);
         }
     }
 }

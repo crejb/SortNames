@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArgumentsParser.cs" />
+    <Compile Include="ConsoleLogger.cs" />
     <Compile Include="FilenameProvider.cs" />
     <Compile Include="Interfaces\IFileWriter.cs" />
+    <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Interfaces\IPersonFormatter.cs" />
     <Compile Include="Interfaces\IFileReader.cs" />
     <Compile Include="Interfaces\ISortStrategy.cs" />
