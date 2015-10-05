@@ -57,6 +57,8 @@
     <Compile Include="ArgumentsParserTests.cs" />
     <Compile Include="FilenameProviderTests.cs" />
     <Compile Include="ExecutionTests.cs" />
+    <Compile Include="PersonDataParserTests.cs" />
+    <Compile Include="PersonDataSourceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

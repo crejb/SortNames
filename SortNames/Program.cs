@@ -18,7 +18,7 @@ namespace SortNames
 
             var outputFilename = GetOutputFilename(inputFilename);
 
-            var sortExecution = BuildSortExecution();
+            var sortExecution = BuildSortExecution(inputFilename);
             sortExecution.Run();
 
             Console.WriteLine("Finished: created {0}", outputFilename);
@@ -45,9 +45,11 @@ namespace SortNames
             return filenameProvider.GetOutputFilename(filename);
         }
 
-        private static SortNamesExecution BuildSortExecution()
+        private static SortNamesExecution BuildSortExecution(string inputFilename)
         {
-            throw new NotImplementedException();
+            var dataSource = new PersonDataSource(new PersonFileReader(inputFilename), new PersonDataParser());
+
+            return new SortNamesExecution(dataSource, null, null);
         }
     }
 }
