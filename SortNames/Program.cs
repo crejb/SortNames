@@ -41,7 +41,8 @@ namespace SortNames
 
         private static string GetOutputFilename(string filename)
         {
-            throw new NotImplementedException();
+            var filenameProvider = new FilenameProvider();
+            return filenameProvider.GetOutputFilename(filename);
         }
 
         private static SortNamesExecution BuildSortExecution()
