@@ -6,10 +6,47 @@ using System.Threading.Tasks;
 
 namespace SortNames
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            string inputFilename;
+            if (!TryGetFilename(args, out inputFilename))
+            {
+                return;
+            }
+
+            var outputFilename = GetOutputFilename(inputFilename);
+
+            var sortExecution = BuildSortExecution();
+            sortExecution.Run();
+
+            Console.WriteLine("Finished: created {0}", outputFilename);
+        }
+
+        private static bool TryGetFilename(string[] args, out string filename)
+        {
+            var argumentParser = new ArgumentsParser(args);
+            argumentParser.Parse();
+            if (!argumentParser.Success)
+            {
+                Console.WriteLine(argumentParser.ErrorMessage);
+                filename = null;
+                return false;
+            }
+
+            filename = argumentParser.Filename;
+            return true;
+        }
+
+        private static string GetOutputFilename(string filename)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static SortNamesExecution BuildSortExecution()
+        {
+            return new SortNamesExecution();
         }
     }
 }
